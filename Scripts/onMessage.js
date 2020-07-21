@@ -91,21 +91,6 @@ if (message.body.toLowerCase().startsWith('help') || message.body.toLowerCase().
 
 }
 
-if (message.body.startsWith('test')) {
-
-/*   console.log(message)
-  members = await gclient.getGroupMembersIds(message.chat.id)
-  for (let index = 0; index < members.length; index++) {
-    console.log(members[index].user)
-  }  */
-  gclient.sendLocation(
-    message.from,
-    25.6801987,
-    -100.4060626,
-    'Some address, Washington DC',
-    'Subtitle'
-  ); 
-}
 
 
 if (message.isMedia & message.caption === "Sticker") {
