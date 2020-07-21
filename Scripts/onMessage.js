@@ -135,7 +135,7 @@ if (message.body.toLowerCase().startsWith("!meme") || message.body.toLowerCase()
 
   } else {
     
-    gclient.sendText(message.from, 'Format ist \"meme Anzahl\"(max 50)');
+    gclient.sendText(message.from, 'format is \"meme count\"(max 50)');
 
   }
 }
@@ -150,7 +150,7 @@ if (message.body.toLowerCase().startsWith('hentai') || message.body.toLowerCase(
 
   } else {
     
-    gclient.sendText(message.from, 'Format ist \"hentai Anzahl\"(max 50)');
+    gclient.sendText(message.from, 'format is \"hentai count\"(max 50)');
 
   }
 }
@@ -166,7 +166,7 @@ if (message.body.toLowerCase().startsWith('reddit') || message.body.toLowerCase(
 
   } else {
     
-    gclient.sendText(message.from, 'Format ist \"reddit Anzahl Subreddit\"(max 50)');
+    gclient.sendText(message.from, 'format is \"reddit count Subreddit\"(max 50)');
 
   } 
 }
