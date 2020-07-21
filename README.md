@@ -27,4 +27,5 @@ ban <br>
 unban <br>
 
 # Disclaimer
+Tested on Raspberry Pi 4b+ with Raspberry Os installed
 This script isn't perfect in the slightest sense. Its just a small I am wokring on in my free time so yeah maintaince is pretty poor but I try to do my best :D.
