@@ -9,11 +9,13 @@ there is a help command but is limited and doesn't contain every command for exa
 after that you just have to Scan the Qr-Code in the console and it will start 
 
 # Avaliable Commands
+ping <br>
 ytdl <br>
 ytmp3 <br>
 reddit <br>
 meme <br>
 hentai <br>
+help <br>
 Media + Sauce <br>
 Media + Sticker <br>
 ban <br>
