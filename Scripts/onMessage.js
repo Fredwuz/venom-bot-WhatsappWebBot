@@ -183,7 +183,7 @@ try {
   daten = JSON.parse(daten);
 } catch (error) {
   console.log("keine Sauce gefunden")
-  gclient.sendText(message.from, "Error keine Sauce gefunden");
+  gclient.sendText(message.from, "Error no Sauce found");
   await nrc.run('rm temp'+message.from+".jpeg")
   return
 }
@@ -191,7 +191,7 @@ try {
 var anime = ""
 for (let index = 1; index < daten.docs.length; index++) {
 
-  var anime = anime + index + ". Ergebnis " + daten.docs[index].anime + "\n"
+  var anime = anime + index + ". Result " + daten.docs[index].anime + "\n"
   
 }
 console.log(anime)
