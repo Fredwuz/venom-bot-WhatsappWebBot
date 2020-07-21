@@ -9,5 +9,6 @@ npm install -g axios
 npm install -g request
 npm install -g path
 npm install -g readline
+npm install curl
 
 
