@@ -13,7 +13,7 @@ exports.reddit = async function (subreddit,anzahl,message) {
 
     } catch (error) {
 
-        gclient.sendText(message.from, 'Subreddit nicht gefunden\n'+error);
+        gclient.sendText(message.from, 'Subreddit not found\n'+error);
         return
     }
     items = response.data.memes
@@ -56,7 +56,7 @@ exports.reddit = async function (subreddit,anzahl,message) {
 
     }
    await Sleep(5000)
-   gclient.sendText(message.from, 'Fertig');
+   gclient.sendText(message.from, 'Finished');
   }
 
 
