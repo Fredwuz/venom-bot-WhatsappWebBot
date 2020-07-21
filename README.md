@@ -13,6 +13,7 @@ ytdl <br>
 ytmp3 <br>
 reddit <br>
 meme <br>
+hentai <br>
 Media + Sauce <br>
 Media + Sticker <br>
 ban <br>
