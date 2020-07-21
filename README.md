@@ -8,5 +8,15 @@ you also have to change `yourNumber` in `message.author == "yourNumber"` in line
 there is a help command but is limited and doesn't contain every command for example the ban and unban command to limit users to use the bot (only works in groups at the moment) <br>
 after that you just have to Scan the Qr-Code in the console and it will start 
 
+# Avaliable Commands
+ytdl <br>
+ytmp3 <br>
+reddit <br>
+meme <br>
+Media + Sauce <br>
+Media + Sticker <br>
+ban <br>
+unban <br>
+
 # Disclaimer
 This script isn't perfect in the slightest sense. Its just a small I am wokring on in my free time so yeah maintaince is pretty poor but I try to do my best :D.
