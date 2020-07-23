@@ -14,17 +14,17 @@ after that you just have to Scan the Qr-Code in the console and it will start
 just start the [main.js](Scripts/main.js) with node
 
 # Avaliable Commands
-ping <br>
-ytdl <br>
-ytmp3 <br>
-reddit <br>
-meme <br>
-hentai <br>
-help <br>
-Media + Sauce <br>
-Media + Sticker <br>
-ban <br>
-unban <br>
+ping replys with pong<br>
+ytdl downloads YouTube video and sends it if under 64 mB <br>
+ytmp3 downloads YouTube video as mp3 File and sends if under 100 mB<br>
+reddit sends given amount of pictures from given subreddit <br>
+meme sends given amount of pictures from meme,me_irl,dankmemes subreddit<br>
+hentai sends given amount of pictures from Hentai subreddit <br>
+help sends help file<br>
+Media + Sauce checks anime Source via trace.moe<br>
+picture + Sticker sends picture back as sticker<br>
+ban bans user from using Bot inside Group<br>
+unban unbans user inside Group <br>
 
 # Disclaimer
 Tested on Raspberry Pi 4b+ with Raspberry Os installed <br>
