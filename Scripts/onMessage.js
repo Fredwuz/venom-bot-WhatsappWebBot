@@ -27,16 +27,16 @@ for await (const line of rl) {
 
 
 if (message.body === 'Hi') {
-    gclient.sendText(message.from, '👋 Hallo I bims Jürgen M.!');
+    gclient.sendText(message.from, '👋 Hello BipBop!');
   }
 
-if (message.body.toLowerCase().startsWith('!ban') || message.body.toLowerCase().startsWith('ban') && message.author == "yourNumber") {
+if (message.body.toLowerCase().startsWith('!ban') | message.body.toLowerCase().startsWith('ban') && message.author == "yourNumber") {
   bannedNumber = message.body.substring(message.body.indexOf("@") + 1)
   fs.appendFileSync('bans.txt', message.from+' '+bannedNumber+"@c.us\n");
   gclient.sendMentioned(message.from, 'Banned @'+bannedNumber+'!', [bannedNumber]);
 
 }
-if (message.body.toLowerCase().startsWith('!unban') || message.body.toLowerCase().startsWith('unban') && message.author == "yourNumber") {
+if (message.body.toLowerCase().startsWith('!unban') | message.body.toLowerCase().startsWith('unban') && message.author == "yourNumber") {
   unBannedNumber = message.body.substring(message.body.indexOf("@") + 1)
   fs.readFile('bans.txt', {encoding: 'utf-8'}, function(err, data) {
       if (err) throw error;
