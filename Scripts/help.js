@@ -1,6 +1,15 @@
 exports.help = async function (message) {
 
-gclient.sendText(message.from, '!ytdl + Link(Downloads YouTube Videos) \n!ytmp3 + Link (Downloads YouTube Video as Audio) \n!poll (beta) \n!reddit \n!meme \nMedia + \"Sauce\" \nMedia + \"Sticker\"')
-
+gclient.sendText(message.from, 
+`*ping* replys with pong\n
+*ytdl* downloads YouTube video and sends it if under 64 mB\n
+*ytmp3* downloads YouTube video as mp3 File and sends if under 100 mB\n
+*reddit* sends given amount of pictures from given subreddit\n
+*meme* sends given amount of pictures from meme, me_irl, dankmemes subreddit\n
+*hentai* sends given amount of pictures from Hentai subreddit\n 
+*help* sends help file\n
+*Media + Sauce* checks anime Source via trace.moe\n
+*Image + Sticker* sends image back as sticker\n
+*ban* restricts user from using Bot inside Group\n
+*unban* unbans user inside Group\n`)
 }
-
