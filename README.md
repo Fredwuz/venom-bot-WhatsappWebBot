@@ -2,7 +2,7 @@
 
 This is a basic WhatsappWebBot using https://github.com/orkestral/venom as a base
 
-# How to use
+# How to install
 you have to have node js installed https://nodejs.org/de/download/
 first you have to install all the requirements located in the requirements.txt <br>
 you also have to change `yourNumber` in `message.author == "yourNumber"` in line 33 and 39 in [onMessage.js](Scripts/onMessage.js) (inside the Scripts Folder) to your Whatsapp Number so only you have excess to the command you can also remove  `&& message.author == "yourNumber"` completely, but it is not recommended <br>
