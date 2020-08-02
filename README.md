@@ -15,8 +15,8 @@ just start the [main.js](Scripts/main.js) with node (node Scripts/main.js)
 
 # Avaliable Commands
 **ping** replys with pong<br>
-**ytdl** downloads YouTube video and sends it if under 64 mB <br>
-**ytmp3** downloads YouTube video as mp3 File and sends if under 100 mB<br>
+**ytdl** ~~downloads YouTube video and sends it if under 64 mB~~ currently disabled<br>
+**ytmp3** ~~downloads YouTube video as mp3 File and sends if under 100 mB~~ currently disabled<br>
 **reddit** sends given amount of pictures from given subreddit <br>
 **meme** sends given amount of pictures from meme, me_irl, dankmemes subreddit<br>
 **hentai** sends given amount of pictures from Hentai subreddit <br>
