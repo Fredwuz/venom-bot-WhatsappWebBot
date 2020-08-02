@@ -10,5 +10,5 @@ npm install -g request
 npm install -g path
 npm install -g readline
 npm install -g curl
-
+npm install -g image-size
 
