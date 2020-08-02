@@ -1,5 +1,5 @@
 const yt = require('./yt')
-const main = require('./main')
+const sendSticker = require('./sendSticker')
 
 exports.mp3 = async function (message) {
       
@@ -27,6 +27,19 @@ for (let i = 0; i < queuemp4.length; i++) {
     return
   }
 }
+}
+
+exports.sendSticker = async function (message) {
+      
+  for (let i = 0; i < queueSticker.length; i++) {
+
+    if (queueSticker[i].from == message.from) {
+
+      console.log(queueSticker[i].from)
+      sendSticker.sendSticker(queueSticker[i])
+      queueSticker.splice(i, 1);
+    }
+  }
 }
 
 

@@ -11,5 +11,6 @@ gclient.sendText(message.from,
 *Media + Sauce* checks anime Source via trace.moe\n
 *Image + Sticker* sends image back as sticker\n
 *ban* restricts user from using Bot inside Group\n
-*unban* unbans user inside Group\n`)
+*unban* unbans user inside Group\n
+*allSticker* Every Image send will be send back as Sticker, can be Turn on and off\n`)
 }

@@ -2,14 +2,18 @@ const reddit = require('./reddit')
 const poll = require('./poll')
 const yt = require('./yt')
 const fs = require('fs')
-const mime = require('mime-types')
-const nrc = require('node-run-cmd')
 const readline = require('readline')
 const help = require('./help')
+const sendSticker = require('./sendSticker')
+const config = require('./config.json')
+const ban  = require('./ban')
+const sauce = require('./sauce')
+
 
 
 
 exports.message = async function (message) {
+
 
 const bans = fs.createReadStream('bans.txt');
   
@@ -24,55 +28,67 @@ for await (const line of rl) {
   return
   }
 }
+if (message.isMedia) {
+  if (allSticker.indexOf(message.from) > -1) {
+    message.caption = "Sticker"
+}
+}
 
+if (message.body.toLowerCase().startsWith("allsticker")) {
+  console.log(allSticker)
+  if (message.body.substring(message.body.indexOf(" ") + 1) == "on") {
+  allSticker.push(message.from)
+  gclient.sendText(message.from, 'All Sticker function turned on');
+  } else if (message.body.substring(message.body.indexOf(" ") + 1) == "off") {
+    for (let i = 0; i < allSticker.length; i++) {
+      if (allSticker[i] == message.from) {
+        allSticker.splice(i, 1);
+      }
+    }
+    gclient.sendText(message.from, 'All Sticker function turned off');
+    
+  } else {
+
+    gclient.sendText(message.from, 'Wrong Parameter');
+  }
+}
 
 if (message.body === 'Hi') {
-    gclient.sendText(message.from, '👋 Hello BipBop!');
+
+    gclient.sendText(message.from, '👋 Hello!');
+
   }
 
-if (message.body.toLowerCase().startsWith('!ban') | message.body.toLowerCase().startsWith('ban') && message.author == "yourNumber") {
-  bannedNumber = message.body.substring(message.body.indexOf("@") + 1)
-  fs.appendFileSync('bans.txt', message.from+' '+bannedNumber+"@c.us\n");
-  gclient.sendMentioned(message.from, 'Banned @'+bannedNumber+'!', [bannedNumber]);
+
+if (message.body.toLowerCase().startsWith('!ban') | message.body.toLowerCase().startsWith('ban') && message.author == config.Admin+"@c.us") {
+
+ban.ban(message)
 
 }
-if (message.body.toLowerCase().startsWith('!unban') | message.body.toLowerCase().startsWith('unban') && message.author == "yourNumber") {
-  unBannedNumber = message.body.substring(message.body.indexOf("@") + 1)
-  fs.readFile('bans.txt', {encoding: 'utf-8'}, function(err, data) {
-      if (err) throw error;
-  
-      let dataArray = data.split('\n'); 
-      const searchKeyword = message.from+' '+unBannedNumber+"@c.us"; 
-      let lastIndex = -1; 
-  
-      for (let index=0; index<dataArray.length; index++) {
-          if (dataArray[index].includes(searchKeyword)) { 
-              lastIndex = index; 
-              break; 
-          }
-      }
-      dataArray.splice(lastIndex, 1);
-      const updatedData = dataArray.join('\n');
-      fs.writeFile('bans.txt', updatedData, (err) => {
-          if (err) throw err;
-          gclient.sendMentioned(message.from, 'Unbanned @'+unBannedNumber+'!', [unBannedNumber]);
-          
-      });
-  
-  });
 
+if (message.body.toLowerCase().startsWith('!unban') | message.body.toLowerCase().startsWith('unban') && message.author == config.Admin+"@c.us") {
 
+  ban.unban(message)
 
 }
+
 if (message.body.toLowerCase() === 'ping') {
   gclient.sendText(message.from, 'Pong')
 }  
 
-if (message.body.endsWith('?')) {
+if (message.body.endsWith('?') && message.isGroupMsg == false) {
    if (Math.round(Math.random()) == 1) {
-    gclient.sendText(message.from, 'Ja')
+    gclient.sendText(message.from, 'Yes')
   } else {
-    gclient.sendText(message.from, 'Nein')
+    gclient.sendText(message.from, 'No')
+  } 
+}
+
+if (message.body == "🤔") {
+  if (Math.round(Math.random()) == 1) {
+    gclient.sendText(message.from, 'Yes')
+  } else {
+    gclient.sendText(message.from, 'No')
   } 
 }
 
@@ -80,32 +96,32 @@ if (message.body.toLowerCase().startsWith('!poll') || message.body.toLowerCase()
 
   //console.log(message.chat.groupMetadata.creation)
   gclient.sendText(message.from, 'Still in Testing')
-  console.log(polllist)
-  polllist.push(message.chatId)
+  // console.log(polllist)
+  // polllist.push(message.chatId)
   
-
 }
+
 if (message.body.toLowerCase().startsWith('help') || message.body.toLowerCase().startsWith('!help')) {
 
   help.help(message)
 
 }
 
+if (message.body.startsWith('test')) {
+
+/*   console.log(message)
+  members = await gclient.getGroupMembersIds(message.chat.id)
+  for (let index = 0; index < members.length; index++) {
+    console.log(members[index].user)
+  }  */
+}
 
 
-if (message.isMedia & message.caption === "Sticker") {
- // console.log(message)
-    const buffer = await gclient.downloadFile(message);
-    const fileName = `temp${message.from}.${mime.extension(message.mimetype)}`; 
-  fs.writeFile(fileName, buffer, function (err) {})
+if (message.isMedia & message.caption == "Sticker") {
 
- fs.rename('temp'+message.from+'.jpeg', 'temp'+message.from+'.jpg', (err) => {
-    if(err) throw err;
-    else{
-        console.log("File Renamed!")            
-        gclient.sendImageAsSticker(message.from, 'temp'+message.from+'.jpg');
-    }
- })
+
+sendSticker.sendSticker(message)
+
 }
 
 
@@ -113,14 +129,16 @@ if (message.isMedia & message.caption === "Sticker") {
 
 if (message.body.toLowerCase().startsWith('!ytdl') || message.body.toLowerCase().startsWith('ytdl')) {
 
-  yt.mp4(message)
+  gclient.sendText(message.from, 'currently disabled')
+//  yt.mp4(message)
 
 }
 
 
 if (message.body.toLowerCase().startsWith('!ytmp3') || message.body.toLowerCase().startsWith('ytmp3')) {
-  
-  yt.mp3(message)
+
+  gclient.sendText(message.from, 'currently disabled')
+//  yt.mp3(message)
 
 }
 
@@ -173,46 +191,23 @@ if (message.body.toLowerCase().startsWith('reddit') || message.body.toLowerCase(
 
 if (message.isMedia & message.caption === "Sauce") {
 
-const buffer = await gclient.downloadFile(message);
-const fileName = `temp${message.from}.${mime.extension(message.mimetype)}`; 
-fs.writeFile(fileName, buffer, function (err) {})
-gclient.sendText(message.from, "Suche Sauce");
+  sauce.sauce(message)
 
-await nrc.run("curl -F \"image=@"+'temp'+message.from+".jpeg\""+" https://trace.moe/api/search", { onData: dataCallback})
-try {
-  daten = JSON.parse(daten);
-} catch (error) {
-  console.log("keine Sauce gefunden")
-  gclient.sendText(message.from, "Error no Sauce found");
-  await nrc.run('rm temp'+message.from+".jpeg")
-  return
 }
 
-var anime = ""
-for (let index = 1; index < daten.docs.length; index++) {
-
-  var anime = anime + index + ". Result " + daten.docs[index].anime + "\n"
-  
-}
-console.log(anime)
-gclient.sendText(message.from, anime);
-}
-await nrc.run('rm temp'+message.from+".jpeg")
 
 
-
-
-
+delete require.cache[require.resolve('./sendSticker')]
 delete require.cache[require.resolve('./reddit')]
 delete require.cache[require.resolve('./poll')]
 delete require.cache[require.resolve('./yt')]
 delete require.cache[require.resolve('./help')]
+delete require.cache[require.resolve('./sauce')]
+delete require.cache[require.resolve('./config.json')]
 }
 
 
-var dataCallback = function(data) {
-  daten = data 
-    }
+
 
 
 

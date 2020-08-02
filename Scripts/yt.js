@@ -25,8 +25,8 @@ exports.mp3 = async function (message) {
     }
     console.log(link)
     gclient.sendText(message.from, 'Audio downloading');
-    await nrc.run ("youtube-dl --extract-audio --audio-quality 0 --audio-format mp3  --output "+'/audio/'+message.from+".%(ext)s\" "+ link)
-    if (Math.round((fs.statSync('/audio/'+message.from+".mp3").size/1000000)) > 99) {
+    await nrc.run ("youtube-dl --extract-audio --audio-quality 0 --audio-format mp3  --output "+'/home/pi/whatsappweb/audio/'+message.from+".%(ext)s\" "+ link)
+    if (Math.round((fs.statSync('/home/pi/whatsappweb/audio/'+message.from+".mp3").size/1000000)) > 99) {
 
         gclient.sendText(message.from, 'File bigger then 100 Mb can\'t send file');
         if (queuemp3.length != 0) {
@@ -35,13 +35,13 @@ exports.mp3 = async function (message) {
         return
         
     }
-    gclient.sendFile(message.from,'/audio/'+message.from+".mp3", '', '');
-    if (Math.round((fs.statSync('/audio/'+message.from+".mp3").size/1000000)) == 0) {
+    gclient.sendFile(message.from,'/home/pi/whatsappweb/audio/'+message.from+".mp3", '', '');
+    if (Math.round((fs.statSync('/home/pi/whatsappweb/audio/'+message.from+".mp3").size/1000000)) == 0) {
 
-        var größe = Math.round((fs.statSync('/audio/'+message.from+".mp3").size/1000))+" kB"
+        var größe = Math.round((fs.statSync('/home/pi/whatsappweb/audio/'+message.from+".mp3").size/1000))+" kB"
     
     } else {
-        var größe = Math.round((fs.statSync('/audio/'+message.from+".mp3").size/1000000))+" MB"
+        var größe = Math.round((fs.statSync('/home/pi/whatsappweb/audio/'+message.from+".mp3").size/1000000))+" MB"
     }
 
     gclient.sendText(message.from, 'Audio sending \nSize: '+größe);
@@ -54,7 +54,7 @@ exports.mp3 = async function (message) {
     if (queuemp3.length != 0) {
         queuejs.mp3(message)
     }
-    delete require.cache[require.resolve('./poll')]
+    delete require.cache[require.resolve('./queue')]
 }
 
 exports.mp4 = async function(message) {
@@ -66,7 +66,7 @@ exports.mp4 = async function(message) {
         return;
     } else {
     }
-    amdownloaden.push(message.from)     
+    // amdownloaden.push(message.from)     
 
 
     var link = String(message.body.match(/\bhttps?:\/\/\S+/gi))
@@ -81,8 +81,9 @@ exports.mp4 = async function(message) {
     }
     console.log(link)
     gclient.sendText(message.from, 'Video downloading');
-    await nrc.run ("youtube-dl --format mp4 --no-continue  --output \"/video/"+message.from+".%(ext)s\" "+link)
-    if (Math.round((fs.statSync('/video/'+message.from+".mp4").size/1000000)) > 63) {
+    console.log("youtube-dl --format mp4 --no-continue  --output \"/home/pi/whatsappweb/video/"+message.from+".%(ext)s\" "+link)
+    await nrc.run ("youtube-dl --format mp4 --no-continue  --output \"/home/pi/whatsappweb/video/"+message.from+".%(ext)s\" "+link)
+    if (Math.round((fs.statSync('/home/pi/whatsappweb/video/'+message.from+".mp4").size/1000000)) > 63) {
 
         gclient.sendText(message.from, 'File bigger then 64 Mb can\'t send file');
         if (queuemp4.length != 0) {
@@ -90,14 +91,14 @@ exports.mp4 = async function(message) {
         }
         return  
     }
-    await gclient.sendFile(message.from, '/video/'+message.from+'.mp4', '', '');
+    await gclient.sendFile(message.from, '/home/pi/whatsappweb/video/'+message.from+'.mp4', '', '');
 
-    if (Math.round((fs.statSync('/video/'+message.from+".mp4").size/1000000)) == 0) {
+    if (Math.round((fs.statSync('/home/pi/whatsappweb/video/'+message.from+".mp4").size/1000000)) == 0) {
 
-        var größe = Math.round((fs.statSync('/video/'+message.from+".mp4").size/1000))+" kB"
+        var größe = Math.round((fs.statSync('/home/pi/whatsappweb/video/'+message.from+".mp4").size/1000))+" kB"
     
     } else {
-        var größe = Math.round((fs.statSync('/video/'+message.from+".mp4").size/1000000))+" MB"
+        var größe = Math.round((fs.statSync('/home/pi/whatsappweb/video/'+message.from+".mp4").size/1000000))+" MB"
     }
 
     gclient.sendText(message.from, 'Video sending\nSize: '+größe);
@@ -111,9 +112,13 @@ exports.mp4 = async function(message) {
     if (queuemp4.length != 0) {
         queuejs.mp4(message)
     }
-
+    delete require.cache[require.resolve('./queue')]
 }
 
 function Sleep(milliseconds) {
     return new Promise(resolve => setTimeout(resolve, milliseconds));
   }
+
+var dataCallback = function(data) {
+    daten = data 
+    }  

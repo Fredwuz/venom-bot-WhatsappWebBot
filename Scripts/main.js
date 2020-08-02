@@ -9,9 +9,12 @@ async function start(client) {
   global.gclient = client
   global.Stimmen = [[]]
   global.amdownloaden = []
+  global.sendingSticker = []
+  global.queueSticker = []
   global.queuemp3 = []
   global.queuemp4 = []
   global.polllist = []
+  global.allSticker = []
   
 
   client.onAddedToGroup(chatEvent => {
@@ -37,8 +40,6 @@ async function start(client) {
 
 
 }
-
-
 
 
 
