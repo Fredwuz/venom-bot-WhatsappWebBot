@@ -25,6 +25,7 @@ just start the [main.js](Scripts/main.js) with node (node Scripts/main.js)
 **Image + Sticker** sends image back as sticker<br>
 **ban** restricts user from using Bot inside Group<br>
 **unban** unbans user inside Group <br>
+**allSticker** Every Image send will be send back as Sticker, can be Turn on and off <br>
 
 # Disclaimer
 Tested on Raspberry Pi 4b+ with Raspberry Os installed <br>
