@@ -2,8 +2,8 @@ exports.help = async function (message) {
 
 gclient.sendText(message.from, 
 `*ping* replys with pong\n
-*ytdl* downloads YouTube video and sends it if under 64 mB\n
-*ytmp3* downloads YouTube video as mp3 File and sends if under 100 mB\n
+*ytdl* ~downloads YouTube video and sends it if under 64 mB~ currently disabled\n
+*ytmp3* ~downloads YouTube video as mp3 File and sends if under 100 mB~ currently disabled\n
 *reddit* sends given amount of pictures from given subreddit\n
 *meme* sends given amount of pictures from meme, me_irl, dankmemes subreddit\n
 *hentai* sends given amount of pictures from Hentai subreddit\n 
