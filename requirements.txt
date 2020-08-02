@@ -11,4 +11,5 @@ npm install -g path
 npm install -g readline
 npm install -g curl
 npm install -g image-size
+sudo apt-get install imagemagick
 
