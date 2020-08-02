@@ -5,7 +5,7 @@ This is a basic WhatsappWebBot using https://github.com/orkestral/venom as a bas
 # How to install
 you have to have node js installed https://nodejs.org/de/download/
 first you have to install all the requirements located in the requirements.txt <br>
-you also have to change `yourNumber` in `message.author == "yourNumber"` in line 33 and 39 in [onMessage.js](Scripts/onMessage.js) (inside the Scripts Folder) to your Whatsapp Number(with area code e.g. +49 for germany) so only you have excess to the command you can also remove  `&& message.author == "yourNumber"` completely, but it is not recommended <br>
+you also have to change `yourNumber` in `message.author == "yourNumber"` in line 33 and 39 in [onMessage.js](Scripts/onMessage.js) (inside the Scripts Folder) to your Whatsapp Number(with area code e.g. 49 for germany) so only you have excess to the command you can also remove  `&& message.author == "yourNumber"` completely, but it is not recommended <br>
 there is a help command but is limited and doesn't contain every command for example the ban and unban command to limit users to use the bot (only works in groups at the moment) <br>
 after that you just have to Scan the Qr-Code in the console and it will start 
 
