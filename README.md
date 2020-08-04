@@ -11,7 +11,7 @@ after that you just have to Scan the Qr-Code in the console and it will start
 
 # How to start
 
-just start the [main.js](Scripts/main.js) with node (node Scripts/main.js)
+just start the [main.js](Scripts/main.js) with node (**node Scripts/main.js**)
 
 # Avaliable Commands
 **ping** replys with pong<br>
