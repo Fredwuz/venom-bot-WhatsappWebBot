@@ -24,20 +24,20 @@ exports.reddit = async function (subreddit,anzahl,message) {
         console.log(items[i].url)
         var name = items[i].url.substring(items[i].url.lastIndexOf("/") + 1)
 
-        await new Promise(resolve =>request(items[i].url).pipe(fs.createWriteStream("/home/pi/whatsappweb/bilder/"+name)).on('finish', resolve));
-        var dateiendung = path.extname("/home/pi/whatsappweb/bilder/"+name)
+        await new Promise(resolve =>request(items[i].url).pipe(fs.createWriteStream("bilder/"+name)).on('finish', resolve));
+        var dateiendung = path.extname("bilder/"+name)
         if (dateiendung === ".gif") {
 
 
           try {
-            await fs.promises.access("/home/pi/whatsappweb/bilder/"+name+".mp4");
+            await fs.promises.access("bilder/"+name+".mp4");
 
         } catch (error) {
-          await nrc.run("ffmpeg -i "+"/home/pi/whatsappweb/bilder/"+name+" -movflags faststart -pix_fmt yuv420p -vf \"scale=trunc(iw/2)*2:trunc(ih/2)*2\" "+"/home/pi/whatsappweb/bilder/"+name+".mp4")
+          await nrc.run("ffmpeg -i "+"bilder/"+name+" -movflags faststart -pix_fmt yuv420p -vf \"scale=trunc(iw/2)*2:trunc(ih/2)*2\" "+"bilder/"+name+".mp4")
         }
         await gclient.sendVideoAsGif(
           message.from,
-          "/home/pi/whatsappweb/bilder/"+name+".mp4",
+          "bilder/"+name+".mp4",
           'video.gif',
           items[i].title
         );
@@ -46,7 +46,7 @@ exports.reddit = async function (subreddit,anzahl,message) {
 
           await gclient.sendImage(
             message.from,
-            "/home/pi/whatsappweb/bilder/"+name,
+            "bilder/"+name,
             name,
             items[i].title
           );
