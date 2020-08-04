@@ -8,7 +8,8 @@ first you have to install all the requirements located in the requirements.txt <
 you also have to change `yourNumber` in [config.json](Scripts/config.json) (inside the Scripts Folder) to your Whatsapp Number(with area code e.g. 49 for germany) so only you have excess to the command <br>
 there is a help command <br>
 after that you just have to Scan the Qr-Code in the console and it will start<br>
-you also have to create the Folders "Sticker", "bilder", "audio" and "video" outside the Scripts folder like this ![Image](https://i.imgur.com/up8tq5S.png)
+you also have to create the Folders "Sticker", "bilder", "audio" and "video" outside the Scripts folder like this<br>
+![Image](https://i.imgur.com/up8tq5S.png)
 
 
 # How to start
