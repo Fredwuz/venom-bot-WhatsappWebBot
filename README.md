@@ -33,4 +33,4 @@ just start the [main.js](Scripts/main.js) with node (**node Scripts/main.js**)
 # Disclaimer
 Tested on Raspberry Pi 4b+ with Raspberry Os installed <br>
 This script isn't perfect in the slightest sense. Its just a small project I am working on in my free time so yeah maintaince is pretty poor but I try to do my best :D.<br>
-if you have any questions or suggestions you can join my [Discord](https://discord.gg/SZxPukb)
+if you have any questions or feature requests you can join my [Discord](https://discord.gg/SZxPukb)
