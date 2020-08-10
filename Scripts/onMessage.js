@@ -8,13 +8,15 @@ const sendSticker = require('./sendSticker')
 const config = require('./config.json')
 const ban  = require('./ban')
 const sauce = require('./sauce')
+const Danbooru = require('danbooru')
+const request = require('request')
 
-
+const booru = new Danbooru()
 
 
 exports.message = async function (message) {
 
-
+//console.log(message)
 const bans = fs.createReadStream('bans.txt');
   
 const rl = readline.createInterface({
@@ -35,6 +37,10 @@ if (message.isMedia) {
 }
 
 if (message.body.toLowerCase().startsWith("allsticker")) {
+  if (message.isGroupMsg) {
+    gclient.sendText(message.from, 'All Sticker function can\'t be used in groups');
+    return
+  }
   console.log(allSticker)
   if (message.body.substring(message.body.indexOf(" ") + 1) == "on") {
   allSticker.push(message.from)
@@ -55,7 +61,7 @@ if (message.body.toLowerCase().startsWith("allsticker")) {
 
 if (message.body === 'Hi') {
 
-    gclient.sendText(message.from, '👋 Hello!');
+    gclient.sendText(message.from, '👋 Hallo I bims Jürgen M.!');
 
   }
 
@@ -78,9 +84,9 @@ if (message.body.toLowerCase() === 'ping') {
 
 if (message.body.endsWith('?') && message.isGroupMsg == false) {
    if (Math.round(Math.random()) == 1) {
-    gclient.sendText(message.from, 'Yes')
+    gclient.sendText(message.from, 'Ja')
   } else {
-    gclient.sendText(message.from, 'No')
+    gclient.sendText(message.from, 'Nein')
   } 
 }
 
@@ -90,6 +96,30 @@ if (message.body == "🤔") {
   } else {
     gclient.sendText(message.from, 'No')
   } 
+}
+if (message.body.toLowerCase().startsWith('!danbooru') || message.body.toLowerCase().startsWith('danbooru')) {
+
+  var num = message.body.replace(/^\D+|\D.*$/g, "")
+  console.log(num)
+  booru.posts({ limit: num, tags: 'rating:explicit order:rank' , page : (Math.floor(Math.random() * 10)+1) }).then(async posts => {
+
+    console.log(posts.length)
+     for (let index = 0; index < posts.length; index++) {
+       console.log(posts[index].file_url)
+       if (posts[index].file_url == undefined || posts[index].file_ext == "zip") {
+
+       }else{
+      const url = booru.url(posts[index].file_url)
+      const name = `bilder/${posts[index].md5}.${posts[index].file_ext}`
+      await new Promise(resolve =>request(posts[index].file_url).pipe(fs.createWriteStream("bilder/"+`${posts[index].md5}.${posts[index].file_ext}`)).on('finish', resolve));
+      await gclient.sendImage(
+        message.from,
+        "bilder/"+`${posts[index].md5}.${posts[index].file_ext}`
+      );      
+      }
+    } 
+  })
+
 }
 
 if (message.body.toLowerCase().startsWith('!poll') || message.body.toLowerCase().startsWith('poll')) {
@@ -109,6 +139,13 @@ if (message.body.toLowerCase().startsWith('help') || message.body.toLowerCase().
 
 if (message.body.startsWith('test')) {
 
+
+gclient.createGroup('󠆮', [message.from]);
+//  gclient.sendFile(message.from,'test.mp4', '', '');
+
+// await gclient.sendImageAsStickerGif(message.from, './test.gif');
+
+
 /*   console.log(message)
   members = await gclient.getGroupMembersIds(message.chat.id)
   for (let index = 0; index < members.length; index++) {
@@ -119,7 +156,7 @@ if (message.body.startsWith('test')) {
 
 if (message.isMedia & message.caption == "Sticker") {
 
-
+await gclient.sendText(message.from, 'creating Sticker')
 sendSticker.sendSticker(message)
 
 }
@@ -145,7 +182,7 @@ if (message.body.toLowerCase().startsWith('!ytmp3') || message.body.toLowerCase(
 
 if (message.body.toLowerCase().startsWith("!meme") || message.body.toLowerCase().startsWith("meme")) {
 
-    var anzahlmemes = message.body.slice(5);
+  var anzahlmemes = message.body.split(' ')[1]
 
   if (anzahlmemes >0 && anzahlmemes <=50) {
 
@@ -160,7 +197,7 @@ if (message.body.toLowerCase().startsWith("!meme") || message.body.toLowerCase()
 
 if (message.body.toLowerCase().startsWith('hentai') || message.body.toLowerCase().startsWith('!hentai')) {
 
-    var anzahlmemes = message.body.slice(7);
+  var anzahlmemes = message.body.split(' ')[1]
 
   if (anzahlmemes >0 && anzahlmemes <=50) {
 
@@ -184,7 +221,7 @@ if (message.body.toLowerCase().startsWith('reddit') || message.body.toLowerCase(
 
   } else {
     
-    gclient.sendText(message.from, 'format is \"reddit count Subreddit\"(max 50)');
+    gclient.sendText(message.from, 'format is \"reddit count subreddit\"(max 50)');
 
   } 
 }

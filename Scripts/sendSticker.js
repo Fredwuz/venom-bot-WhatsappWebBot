@@ -11,7 +11,7 @@ exports.sendSticker = async function (message) {
         return;
     } else {
     }
-    sendingSticker.push(message.from)  
+    sendingSticker.push(message.from)
     const buffer = await gclient.decryptFile(message);
     const fileName = `Sticker/temp${message.from}.${mime.extension(message.mimetype)}`; 
     fs.writeFile(fileName, buffer, function (err) {})

@@ -1,8 +1,11 @@
 const venom = require('venom-bot')
 const fs = require('fs')
-var info = require('./info')
+var info = require('./Scripts/info')
 
-venom.create().then((client) => start(client));
+venom.create('main', (base64Qr, asciiQR) => {
+  console.log(asciiQR);
+  exportQR(base64Qr, 'qr.png');
+  }).then((client) => start(client));
 
 
 async function start(client) {
@@ -19,7 +22,7 @@ async function start(client) {
 
   client.onAddedToGroup(chatEvent => {
 
-  var onAddedToGroup = require('./onAddedToGroup')
+  var onAddedToGroup = require('./Scripts/onAddedToGroup')
   onAddedToGroup.AddedToGroup(chatEvent)
   delete require.cache[require.resolve('./onAddedToGroup')];
 
@@ -28,8 +31,8 @@ async function start(client) {
 
   client.onMessage(message => {
 
-  var onMessage = require('./onMessage')
-  var poll = require('./poll')
+  var onMessage = require('./Scripts/onMessage')
+  var poll = require('./Scripts/poll')
   onMessage.message(message)
   poll.poll(message)
   delete require.cache[require.resolve('./onMessage')];
@@ -41,10 +44,15 @@ async function start(client) {
 
 }
 
-
+function exportQR(qrCode, path) {
+  qrCode = qrCode.replace('data:image/png;base64,', '');
+  const imageBuffer = Buffer.from(qrCode, 'base64');
+  fs.writeFileSync(path, imageBuffer);
+}
 
 
 
 function Sleep(milliseconds) {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
+//test

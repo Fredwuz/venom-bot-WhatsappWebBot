@@ -1,4 +1,4 @@
-var main = require('./main')
+var main = require('../main')
 
 
 exports.poll =  async function (message)  {
