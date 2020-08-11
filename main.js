@@ -35,8 +35,8 @@ async function start(client) {
   var poll = require('./Scripts/poll')
   onMessage.message(message)
   poll.poll(message)
-  delete require.cache[require.resolve('./onMessage')];
-  delete require.cache[require.resolve('./poll')]
+  delete require.cache[require.resolve('./Scripts/onMessage')];
+  delete require.cache[require.resolve('./Scripts/poll')]
 
   });
   info.info()

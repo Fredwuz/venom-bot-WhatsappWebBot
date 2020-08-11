@@ -139,9 +139,8 @@ if (message.body.toLowerCase().startsWith('help') || message.body.toLowerCase().
 
 if (message.body.startsWith('test')) {
 
-
-gclient.createGroup('󠆮', [message.from]);
-//  gclient.sendFile(message.from,'test.mp4', '', '');
+//await gclient.sendText(message.from, 'creating Sticker')
+//gclient.sendFile(message.from,'test.mp4', '', '');
 
 // await gclient.sendImageAsStickerGif(message.from, './test.gif');
 
