@@ -23,12 +23,12 @@ exports.reddit = async function (subreddit,anzahl,message) {
         Array.push(items[i])
         console.log(items[i].url)
         var name = items[i].url.substring(items[i].url.lastIndexOf("/") + 1)
+        var dateiendung = items[i].url.substring(items[i].url.lastIndexOf(".") + 1)
+        console.log(dateiendung)
 
-        await new Promise(resolve =>request(items[i].url).pipe(fs.createWriteStream("bilder/"+name)).on('finish', resolve));
-        var dateiendung = path.extname("bilder/"+name)
-        if (dateiendung === ".gif") {
+        if (dateiendung === "gif") {
 
-
+          await new Promise(resolve =>request(items[i].url).pipe(fs.createWriteStream("bilder/"+name)).on('finish', resolve));
           try {
             await fs.promises.access("bilder/"+name+".mp4");
 
@@ -38,7 +38,7 @@ exports.reddit = async function (subreddit,anzahl,message) {
         await gclient.sendVideoAsGif(
           message.from,
           "bilder/"+name+".mp4",
-          'video.gif',
+          '',
           items[i].title
         );
 
@@ -46,7 +46,7 @@ exports.reddit = async function (subreddit,anzahl,message) {
 
           await gclient.sendImage(
             message.from,
-            "bilder/"+name,
+            items[i].url,
             name,
             items[i].title
           );

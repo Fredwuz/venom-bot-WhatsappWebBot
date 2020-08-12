@@ -139,10 +139,12 @@ if (message.body.toLowerCase().startsWith('help') || message.body.toLowerCase().
 
 if (message.body.startsWith('test')) {
 
+
+
+
 //await gclient.sendText(message.from, 'creating Sticker')
 //gclient.sendFile(message.from,'test.mp4', '', '');
-
-// await gclient.sendImageAsStickerGif(message.from, './test.gif');
+// await gclient.sendImageAsStickerGif(message.from, 'https://i.pinimg.com/originals/2a/34/c9/2a34c95330d483685437ae5698b12fd9.gif');
 
 
 /*   console.log(message)
