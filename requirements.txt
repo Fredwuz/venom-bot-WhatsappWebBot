@@ -1,15 +1,2 @@
-npm i venom-bot
-npm i youtube-dl
-npm i node-run-cmd
-npm i rss-parser
-npm i fs
-npm i mime-types
-npm i ytdl-core
-npm i axios
-npm i request
-npm i path
-npm i readline
-npm i curl
-npm i image-size
 sudo apt-get install imagemagick
 
