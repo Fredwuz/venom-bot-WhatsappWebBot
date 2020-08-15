@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "curl": "^0.1.4",
+    "danbooru": "^3.1.0",
     "fs": "0.0.1-security",
     "image-size": "^0.8.3",
     "mime-types": "^2.1.27",
