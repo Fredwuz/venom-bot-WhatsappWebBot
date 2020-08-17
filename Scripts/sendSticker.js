@@ -35,3 +35,4 @@ exports.sendSticker = async function (message) {
     }
     delete require.cache[require.resolve('./queue')]
   }
+
