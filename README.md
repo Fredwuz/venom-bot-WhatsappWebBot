@@ -14,7 +14,7 @@ you also have to create the Folders "Sticker", "bilder", "audio" and "video" out
 
 # How to start
 
-just run node start inside the master folder
+just run npm start inside the master folder
 
 # Avaliable Commands
 **ping** replys with pong<br>
