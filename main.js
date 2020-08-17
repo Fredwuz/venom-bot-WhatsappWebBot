@@ -1,6 +1,7 @@
 const venom = require('venom-bot')
 const fs = require('fs')
 var info = require('./Scripts/info')
+var private = require('./Scripts/private')
 
 venom.create('main', (base64Qr, asciiQR) => {
   console.log(asciiQR);
@@ -18,6 +19,7 @@ async function start(client) {
   global.queuemp4 = []
   global.polllist = []
   global.allSticker = []
+  private.netflix()
   
 
   client.onAddedToGroup(chatEvent => {
