@@ -1,4 +1,5 @@
 const venom = require('venom-bot')
+//const wa = require('@open-wa/wa-automate');
 const fs = require('fs')
 var info = require('./Scripts/info')
 var private = require('./Scripts/private')

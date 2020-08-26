@@ -10,6 +10,7 @@ const ban  = require('./ban')
 const sauce = require('./sauce')
 const Danbooru = require('danbooru')
 const request = require('request')
+const imageToBase64 = require('image-to-base64');
 
 
 const booru = new Danbooru()
@@ -139,10 +140,22 @@ if (message.body.toLowerCase().startsWith('help') || message.body.toLowerCase().
 }
 
 if (message.body.startsWith('test')) {
+  
+  imageToBase64("https://images.vodspy.de/tp/w500h750/6c/6c4de2f0020b268f7128c80325052f69.jpg") // Image URL
+    .then(
+        (response) => {
+         //   console.log(response); // "iVBORw0KGgoAAAANSwCAIA..."
+            img = response
+        }
+    )
+    .catch(
+        (error) => {
+            console.log(error); // Logs an error if there was one
+        }
+    )
 
-
-  https://images.vodspy.de/tp/w500h750/6c/6c4de2f0020b268f7128c80325052f69.jpg
-  await gclient.sendImageAsSticker(message.from, "https://images.vodspy.de/tp/w500h750/6c/6c4de2f0020b268f7128c80325052f69.jpg");
+  //console.log(img)
+  await gclient.sendImageAsSticker(message.from, img);
 //
 //await gclient.sendText(message.from, 'creating Sticker')
 //gclient.sendFile(message.from,'test.mp4', '', '');
