@@ -11,6 +11,7 @@ const sauce = require('./sauce')
 const Danbooru = require('danbooru')
 const request = require('request')
 
+
 const booru = new Danbooru()
 
 
@@ -140,7 +141,8 @@ if (message.body.toLowerCase().startsWith('help') || message.body.toLowerCase().
 if (message.body.startsWith('test')) {
 
 
-
+  https://images.vodspy.de/tp/w500h750/6c/6c4de2f0020b268f7128c80325052f69.jpg
+  await gclient.sendImageAsSticker(message.from, "https://images.vodspy.de/tp/w500h750/6c/6c4de2f0020b268f7128c80325052f69.jpg");
 //
 //await gclient.sendText(message.from, 'creating Sticker')
 //gclient.sendFile(message.from,'test.mp4', '', '');

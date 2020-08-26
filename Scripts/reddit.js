@@ -53,7 +53,7 @@ exports.reddit = async function (subreddit,anzahl,message) {
           
         }
   
-
+        await Sleep(100)
     }
    await Sleep(5000)
    gclient.sendText(message.from, 'Fertig');

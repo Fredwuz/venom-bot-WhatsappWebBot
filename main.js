@@ -19,7 +19,7 @@ async function start(client) {
   global.queuemp4 = []
   global.polllist = []
   global.allSticker = []
-  private.netflix()
+
   
 
   client.onAddedToGroup(chatEvent => {
@@ -42,6 +42,7 @@ async function start(client) {
 
   });
   info.info()
+  private.serien()
 
 
 }
@@ -57,4 +58,3 @@ function exportQR(qrCode, path) {
 function Sleep(milliseconds) {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
-//test
