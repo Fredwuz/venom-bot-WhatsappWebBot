@@ -141,21 +141,9 @@ if (message.body.toLowerCase().startsWith('help') || message.body.toLowerCase().
 
 if (message.body.startsWith('test')) {
   
-  imageToBase64("https://images.vodspy.de/tp/w500h750/6c/6c4de2f0020b268f7128c80325052f69.jpg") // Image URL
-    .then(
-        (response) => {
-         //   console.log(response); // "iVBORw0KGgoAAAANSwCAIA..."
-            img = response
-        }
-    )
-    .catch(
-        (error) => {
-            console.log(error); // Logs an error if there was one
-        }
-    )
 
   //console.log(img)
-  await gclient.sendImageAsSticker(message.from, img);
+  await gclient.sendImageAsStickerGif(message.from, "Sticker/output.gif");
 //
 //await gclient.sendText(message.from, 'creating Sticker')
 //gclient.sendFile(message.from,'test.mp4', '', '');
@@ -172,8 +160,13 @@ if (message.body.startsWith('test')) {
 
 if (message.isMedia & message.caption == "Sticker") {
 
+console.log(message)
 await gclient.sendText(message.from, 'creating Sticker')
-sendSticker.sendSticker(message)
+if (message.type == "video") {
+  sendSticker.sendAnimatedSticker(message)
+}else{
+  sendSticker.sendSticker(message)
+}
 
 }
 

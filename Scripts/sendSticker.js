@@ -36,3 +36,35 @@ exports.sendSticker = async function (message) {
     delete require.cache[require.resolve('./queue')]
 }
 
+exports.sendAnimatedSticker = async function (message) {
+    console.log(sendingAnimatedSticker)
+    if (sendingAnimatedSticker.indexOf(message.from) > -1) {
+        queueAnimatedSticker.push(message)
+        return;
+    } else {
+    }
+    sendingAnimatedSticker.push(message.from)
+    const buffer = await gclient.decryptFile(message);
+    const fileName = `Sticker/temp${message.from}.${mime.extension(message.mimetype)}`;
+    fs.writeFile(fileName, buffer, function (err) { })
+    await nrc.run('ffmpeg -y -i Sticker/temp' + message.from + '.mp4 Sticker/' + message.from + '.gif')
+    var dimensions = await sizeOf('Sticker/' + message.from + '.gif');
+    console.log(dimensions.width + "  " + dimensions.height)
+    if (dimensions.width < dimensions.height) {
+        await nrc.run('mogrify -bordercolor transparent -border ' + ((dimensions.height - dimensions.width) / 2) + 'x0 Sticker/' + message.from + '.gif')
+    } else if (dimensions.width > dimensions.height) {
+        await nrc.run('mogrify -bordercolor transparent -border 0x' + ((dimensions.width - dimensions.height) / 2) + ' Sticker/' + message.from + '.gif')
+    } else {
+    }
+    gclient.sendImageAsStickerGif(message.from, 'Sticker/' + message.from + '.gif');
+    for (let index = 0; index < sendingAnimatedSticker.length; index++) {
+        if (sendingAnimatedSticker[index] == message.from) {
+            sendingAnimatedSticker.splice([index], 1)
+        }
+    }
+    if (queueAnimatedSticker.length != 0) {
+        queuejs.sendAnimatedSticker(message)
+    }
+    delete require.cache[require.resolve('./queue')]
+}
+
