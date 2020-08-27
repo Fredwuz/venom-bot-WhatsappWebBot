@@ -160,7 +160,6 @@ if (message.body.startsWith('test')) {
 
 if (message.isMedia & message.caption == "Sticker") {
 
-console.log(message)
 await gclient.sendText(message.from, 'creating Sticker')
 if (message.type == "video") {
   sendSticker.sendAnimatedSticker(message)
