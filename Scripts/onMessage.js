@@ -63,9 +63,19 @@ if (message.body.toLowerCase().startsWith("allsticker")) {
 
 if (message.body === 'Hi') {
 
-    gclient.sendText(message.from, '👋 Hallo I bims Jürgen M.!');
+  gclient.sendText(message.from, '👋 Hallo I bims Jürgen M.!');
 
-  }
+}
+if (message.body.toLowerCase() == 'guten tag' && message.body != 'GUTEN TAG') {
+
+  await gclient.sendFile(message.from, "Mr_geilschwanz.mp3")
+  
+}
+if (message.body == 'GUTEN TAG') {
+  
+  await gclient.sendFile(message.from, "Mr_geilschwanzLAUT.mp3")
+
+}
 
 
 if (message.body.toLowerCase().startsWith('!ban') | message.body.toLowerCase().startsWith('ban') && message.author == config.Admin+"@c.us") {
@@ -143,7 +153,8 @@ if (message.body.startsWith('test')) {
   
 
   //console.log(img)
-  await gclient.sendImageAsStickerGif(message.from, "Sticker/output.gif");
+await gclient.sendImageAsSticker(message.from, "test.png");
+//await gclient.sendImageAsStickerGif(message.from, "Sticker/output.gif");
 //
 //await gclient.sendText(message.from, 'creating Sticker')
 //gclient.sendFile(message.from,'test.mp4', '', '');
@@ -160,10 +171,11 @@ if (message.body.startsWith('test')) {
 
 if (message.isMedia & message.caption == "Sticker") {
 
-await gclient.sendText(message.from, 'creating Sticker')
 if (message.type == "video") {
+  await gclient.sendText(message.from, 'creating Animated Sticker')
   sendSticker.sendAnimatedSticker(message)
 }else{
+  await gclient.sendText(message.from, 'creating Sticker')
   sendSticker.sendSticker(message)
 }
 
