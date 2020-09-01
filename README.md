@@ -25,7 +25,7 @@ just run npm start inside the master folder
 **hentai** sends given amount of pictures from Hentai subreddit <br>
 **help** sends help file<br>
 **Media + Sauce** checks anime Source via trace.moe<br>
-**Image + Sticker** sends image back as sticker<br>
+**Image + Sticker** sends image back as sticker works with animated Sticker but Stickers can be bugged<br>
 **ban** restricts user from using Bot inside Group<br>
 **unban** unbans user inside Group <br>
 **allSticker** Every Image send will be send back as Sticker, can be Turn on and off <br>
