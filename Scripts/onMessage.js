@@ -153,8 +153,8 @@ if (message.body.startsWith('test')) {
   
 
   //console.log(img)
-await gclient.sendImageAsSticker(message.from, "test.png");
-//await gclient.sendImageAsStickerGif(message.from, "Sticker/output.gif");
+//await gclient.sendImageAsSticker(message.from, "test.png");
+await gclient.sendImageAsStickerGif(message.from, "test6.gif");
 //
 //await gclient.sendText(message.from, 'creating Sticker')
 //gclient.sendFile(message.from,'test.mp4', '', '');

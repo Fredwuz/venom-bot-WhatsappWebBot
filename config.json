@@ -1,4 +1,7 @@
 {
     "Admin": "yourNumber",
-    "onAddedToGroup": "ヽ༼ ಠ益ಠ ༽ﾉ"
+    "onAddedToGroup": "ヽ༼ ಠ益ಠ ༽ﾉ",
+    "serien_feed": [ "", "" ],
+    "serien_feedIMG": [ "", "" ],
+    "serien_feedIMGSticker": [ "", "" ]
 }
