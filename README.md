@@ -8,7 +8,7 @@ first you have to install all the requirements located in the requirements.txt a
 you also have to change `yourNumber` in [config.json](config.json) to your Whatsapp Number(with area code e.g. 49 for germany) and move it inside the Scripts folder so only you have excess to the command <br>
 there is a help command <br>
 after that you just have to Scan the Qr-Code in the console and it will start<br>
-you also have to create the Folders "Sticker", "bilder", "audio" and "video" outside the Scripts folder like this<br>
+you also have to create the Folders "Sticker", "bilder", "audio", "video" and a bans.txt outside the Scripts folder like this<br>
 ![Image](https://i.imgur.com/up8tq5S.png)
 
 
@@ -25,7 +25,7 @@ just run npm start inside the master folder
 **hentai** sends given amount of pictures from Hentai subreddit <br>
 **help** sends help file<br>
 **Media + Sauce** checks anime Source via trace.moe<br>
-**Image + Sticker** sends image back as sticker<br>
+**Image + Sticker** sends image back as sticker works with animated Sticker but Stickers can be bugged<br>
 **ban** restricts user from using Bot inside Group<br>
 **unban** unbans user inside Group <br>
 **allSticker** Every Image send will be send back as Sticker, can be Turn on and off <br>
