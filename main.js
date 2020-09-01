@@ -36,6 +36,7 @@ async function start(client) {
 
   client.onMessage(message => {
 
+  client.sendSeen(message.from)
   var onMessage = require('./Scripts/onMessage')
   var poll = require('./Scripts/poll')
   onMessage.message(message)
