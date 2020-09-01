@@ -9,7 +9,7 @@ gclient.sendText(message.from,
 *hentai* sends given amount of pictures from Hentai subreddit\n 
 *help* sends help file\n
 *Media + Sauce* checks anime Source via trace.moe\n
-*Image + Sticker* sends image back as sticker workds with animated Sticker but can be bugged\n
+*Image + Sticker* sends image back as sticker works with animated Sticker but Stickers can be bugged\n
 *ban* restricts user from using Bot inside Group\n
 *unban* unbans user inside Group\n
 *allSticker* Every Image send will be send back as Sticker, can be Turn on and off\n`)
