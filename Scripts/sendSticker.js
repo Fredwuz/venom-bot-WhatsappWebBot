@@ -60,7 +60,9 @@ exports.sendAnimatedSticker = async function (message) {
   try {
     await gclient.sendImageAsStickerGif(message.from, 'Sticker/' + message.from + '.gif')
   } catch (error) {
-    gclient.reply(message.from, String(error), message.id.toString()) //Error: Processed image is too large for the WebP format
+    if (String(error) == 'Error: Processed image is too large for the WebP format') {
+      gclient.reply(message.from, String(error), message.id.toString()) //Error: Processed image is too large for the WebP format
+    }
   }
 
   for (let index = 0; index < sendingAnimatedSticker.length; index++) {
