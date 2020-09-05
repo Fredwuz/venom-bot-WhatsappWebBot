@@ -1,7 +1,7 @@
 exports.help = async function (message) {
-
-gclient.sendText(message.from, 
-`*ping* replys with pong\n
+  gclient.sendText(
+    message.from,
+    `*ping* replys with pong\n
 *ytdl* ~downloads YouTube video and sends it if under 64 mB~ currently disabled\n
 *ytmp3* ~downloads YouTube video as mp3 File and sends if under 100 mB~ currently disabled\n
 *reddit* sends given amount of pictures from given subreddit\n
@@ -12,5 +12,6 @@ gclient.sendText(message.from,
 *Image + Sticker* sends image back as sticker works with animated Sticker but Stickers can be bugged\n
 *ban* restricts user from using Bot inside Group\n
 *unban* unbans user inside Group\n
-*allSticker* Every Image send will be send back as Sticker, can be Turn on and off\n`)
+*allSticker* Every Image send will be send back as Sticker, can be Turn on and off\n`
+  )
 }

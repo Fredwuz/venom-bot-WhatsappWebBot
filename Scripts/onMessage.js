@@ -214,7 +214,8 @@ exports.message = async function (message) {
     }
   }
 
-  if (message.isMedia & (message.caption === 'Sauce')) {
+  if (message.isMedia & (message.caption == 'Sauce')) {
+    console.log('test')
     sauce.sauce(message)
   }
 
