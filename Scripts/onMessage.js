@@ -146,7 +146,10 @@ exports.message = async function (message) {
   }
 
   if (message.body.startsWith('test')) {
-    console.log(message)
+    await gclient.sendFile(message.from, 'Mr_geilschwanzLAUT.mp3', 'ptt.ogg', '')
+    //console.log(message)ptt.ogg
+    //  await gclient.sendImageAsStickerGif(message.from, 'test.gif')
+    await gclient.sendImageAsStickerGif(message.from, 'testt.gif')
 
     //console.log(img)
     //await gclient.sendImageAsSticker(message.from, "test.png");

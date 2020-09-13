@@ -35,7 +35,7 @@ exports.sendAnimatedSticker = async function (message) {
   for (let i = 0; i < queueAnimatedSticker.length; i++) {
     if (queueAnimatedSticker[i].from == message.from) {
       console.log(queueAnimatedSticker[i].from)
-      sendAnimatedSticker.sendSticker(queueAnimatedSticker[i])
+      sendSticker.sendAnimatedSticker(queueAnimatedSticker[i])
       queueAnimatedSticker.splice(i, 1)
     }
   }
