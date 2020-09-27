@@ -8,6 +8,8 @@ const sendSticker = require('./sendSticker')
 const config = require('./config.json')
 const ban = require('./ban')
 const sauce = require('./sauce')
+const whostreams = require('./whostreams')
+const kahoot = require('./kahoot')
 const Danbooru = require('danbooru')
 const request = require('request')
 const imageToBase64 = require('image-to-base64')
@@ -15,7 +17,7 @@ const imageToBase64 = require('image-to-base64')
 const booru = new Danbooru()
 
 exports.message = async function (message) {
-  //console.log(message)
+  // console.log(message)
   const bans = fs.createReadStream('bans.txt')
 
   const rl = readline.createInterface({
@@ -59,6 +61,10 @@ exports.message = async function (message) {
 
   if (message.body === 'Hi') {
     gclient.sendText(message.from, '👋 Hallo I bims Jürgen M.!')
+  }
+
+  if (message.body.toLowerCase().startsWith('kahoot') || message.body.toLowerCase().startsWith('kahoot')) {
+    kahoot.kahoot(message)
   }
 
   if (message.body.toLowerCase() == 'guten tag' && message.body != 'GUTEN TAG') {
@@ -144,21 +150,46 @@ exports.message = async function (message) {
   if (message.body.toLowerCase().startsWith('help') || message.body.toLowerCase().startsWith('!help')) {
     help.help(message)
   }
+  if (message.body.toLowerCase().startsWith('werstreamt') || message.body.toLowerCase().startsWith('!werstreamt')) {
+    whostreams.whostreams(message)
+  }
 
   if (message.body.startsWith('test')) {
-    await gclient.sendFile(message.from, 'Mr_geilschwanzLAUT.mp3', 'ptt.ogg', '')
+    await gclient
+      .sendImageAsStickerGif(message.from, 'test8.gif') // max 31 Frames  512x512x31 = 8.126.464
+      .then((result) => {
+        console.log('Result: ', result) //return object success
+      })
+      .catch((erro) => {
+        console.error('Error when sending: ', erro.stack) //return object error
+      })
+    /*     gclient
+      .sendLocation(message.from, '-13.6561589', '-69.7309264', 'Brasil')
+      .then((result) => {
+        console.log('Result: ', result) //return object success
+      })
+      .catch((erro) => {
+        console.error('Error when sending: ', erro) //return object error
+      }) */
+    // gclient.sendFile('4917644483908-1593215760@g.us', 'Mr_geilschwanzLAUT.mp3', 'ptt.ogg', '')
+    /*     gclient
+      .sendText('4917644483908-1593215760@g.us', '👋 Hello from venom!')
+      .then((result) => {
+        console.log('Result: ', result) //return object success
+      })
+      .catch((erro) => {
+        console.error('Error when sending: ', erro) //return object error
+      }) */
     //console.log(message)ptt.ogg
     //  await gclient.sendImageAsStickerGif(message.from, 'test.gif')
-    await gclient.sendImageAsStickerGif(message.from, 'testt.gif')
-
+    // await gclient.sendImageAsStickerGif(message.from, 'testt.gif')
     //console.log(img)
-    //await gclient.sendImageAsSticker(message.from, "test.png");
+    // await gclient.sendImageAsSticker(message.from, 'test7.jpg')
     //await gclient.sendImageAsStickerGif(message.from, "test6.gif");
     //
     //await gclient.sendText(message.from, 'creating Sticker')
     //gclient.sendFile(message.from,'test.mp4', '', '');
     // await gclient.sendImageAsStickerGif(message.from, 'https://i.pinimg.com/originals/2a/34/c9/2a34c95330d483685437ae5698b12fd9.gif');
-
     /*   console.log(message)
   members = await gclient.getGroupMembersIds(message.chat.id)
   for (let index = 0; index < members.length; index++) {
@@ -228,5 +259,7 @@ exports.message = async function (message) {
   delete require.cache[require.resolve('./yt')]
   delete require.cache[require.resolve('./help')]
   delete require.cache[require.resolve('./sauce')]
+  delete require.cache[require.resolve('./whostreams')]
+  delete require.cache[require.resolve('./kahoot')]
   delete require.cache[require.resolve('./config.json')]
 }

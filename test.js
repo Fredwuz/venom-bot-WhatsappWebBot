@@ -1,7 +1,10 @@
 const sharp = require('sharp')
 
-path = 'testt.gif'
+// sharp('testtt.gif', { pages: -1 }).toFile('x.webp')
 
-inputBuffer = sharp('testt.gif').toBuffer()
+sharp('testtt.gif', { pages: -1 }).toFile('x.webp')
 
-sharp(inputBuffer).toFile('output.webp', (err, info) => {})
+/* sharp('testtt.gif', { pages: -1 }).resize(520, 520).toFile('output222.webp'),
+  (err, info) => {
+    console.log(err), console.log(info)
+  } */

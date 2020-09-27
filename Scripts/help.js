@@ -12,6 +12,7 @@ exports.help = async function (message) {
 *Image + Sticker* sends image back as sticker works with animated Sticker but Stickers can be bugged\n
 *ban* restricts user from using Bot inside Group\n
 *unban* unbans user inside Group\n
-*allSticker* Every Image send will be send back as Sticker, can be Turn on and off\n`
+*allSticker* Every Image send will be send back as Sticker, can be Turn on and off\n
+*werstreamt + Film/Serien Titel* Gibt Infos zurück wo man den Film/die Serie streamen/leihen/kaufen kann\n`
   )
 }
