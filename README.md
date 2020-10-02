@@ -3,6 +3,7 @@
 This is a basic WhatsappWebBot using https://github.com/orkestral/venom as a base
 
 # How to install
+Python v2.7, v3.5, v3.6, v3.7, or v3.8 needed to install
 you have to have node js installed https://nodejs.org/de/download/
 first you have to install all the requirements located in the requirements.txt and run npm i inside the master folder <br>
 you also have to change `yourNumber` in [config.json](config.json) to your Whatsapp Number(with area code e.g. 49 for germany) and move it inside the Scripts folder so only you have excess to the command <br>
