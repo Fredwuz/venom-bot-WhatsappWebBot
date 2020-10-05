@@ -3,5 +3,6 @@
   "onAddedToGroup": "ヽ༼ ಠ益ಠ ༽ﾉ",
   "DEserien_feed": ["", ""],
   "DEserien_feedIMG": ["", ""],
-  "DEserien_feedIMGSticker": ["", ""]
+  "DEserien_feedIMGSticker": ["", ""],
+  "removebgToken": "YourApiToken"
 }

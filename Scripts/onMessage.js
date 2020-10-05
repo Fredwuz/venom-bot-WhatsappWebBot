@@ -74,7 +74,9 @@ exports.message = async function (message) {
   if (message.body == 'GUTEN TAG') {
     await gclient.sendFile(message.from, 'Mr_geilschwanzLAUT.mp3')
   }
-
+  if (message.body.toLowerCase().startsWith('!restart') | message.body.toLowerCase().startsWith('restart') && message.from == config.Admin + '@c.us') {
+    process.exit(1)
+  }
   if (message.body.toLowerCase().startsWith('!ban') | message.body.toLowerCase().startsWith('ban') && message.author == config.Admin + '@c.us') {
     ban.ban(message)
   }
@@ -155,13 +157,14 @@ exports.message = async function (message) {
   }
 
   if (message.body.startsWith('test')) {
+    console.log('Test Command')
     await gclient
-      .sendImageAsStickerGif(message.from, 'test8.gif') // max 31 Frames  512x512x31 = 8.126.464
+      .sendImageAsStickerGif(message.from, 'test7.gif')
       .then((result) => {
         console.log('Result: ', result) //return object success
       })
       .catch((erro) => {
-        console.error('Error when sending: ', erro.stack) //return object error
+        console.error('Error when sending:------------------------------- ', erro.stack) //return object error
       })
     /*     gclient
       .sendLocation(message.from, '-13.6561589', '-69.7309264', 'Brasil')
@@ -181,7 +184,7 @@ exports.message = async function (message) {
         console.error('Error when sending: ', erro) //return object error
       }) */
     //console.log(message)ptt.ogg
-    //  await gclient.sendImageAsStickerGif(message.from, 'test.gif')
+    // await gclient.sendImageAsSticker(message.from, 'testbild.png')
     // await gclient.sendImageAsStickerGif(message.from, 'testt.gif')
     //console.log(img)
     // await gclient.sendImageAsSticker(message.from, 'test7.jpg')
@@ -205,6 +208,16 @@ exports.message = async function (message) {
       await gclient.sendText(message.from, 'creating Sticker')
       sendSticker.sendSticker(message)
     }
+  }
+  if (message.isMedia & (message.caption == 'tSticker')) {
+    //not working on ARM but x86 and x64 should work just uncomment if you have one of the supported types
+    // if (message.type == 'video') {
+    //   await gclient.sendText(message.from, 'creating transparent Animated Sticker')
+    //   sendSticker.sendAnimatedTSticker(message)
+    // } else {
+    await gclient.sendText(message.from, 'creating transparent Sticker')
+    sendSticker.sendTSticker(message)
+    // }
   }
 
   if (message.body.toLowerCase().startsWith('!ytdl') || message.body.toLowerCase().startsWith('ytdl')) {
