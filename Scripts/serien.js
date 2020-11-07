@@ -1,8 +1,18 @@
+/*
+Author: Fredwuz (frederic23.mai@gmail.com)
+serien.js (c) 2020
+Desc: Netflix and Amazon Prime series update logic
+Created:  10/24/2020
+Modified: 10/27/2020
+*/
+
 var cron = require('node-cron')
 const fs = require('fs')
 const readline = require('readline')
+const fetch = require('node-fetch')
 let Parser = require('rss-parser')
-const imageToBase64 = require('image-to-base64')
+const sizeOf = require('image-size')
+const nrc = require('node-run-cmd')
 const config = require('./config.json')
 
 let parser = new Parser()
@@ -99,30 +109,53 @@ async function sendSerien() {
       }
     }
   }
-  /*     for (let j = 0; j < config.DEserien_feedIMGSticker.length; j++) {
+  /*   imgURLnetflix.forEach(async (element) => {
+    filepath = 'Sticker/' + element.substring(element.lastIndexOf('/') + 1)
+    const response = await fetch(element)
+    const buffer = await response.buffer()
+    fs.writeFile(filepath, buffer, () => console.log('finished downloading!'))
+    await convertSticker(filepath)
+  })
 
-        if (netflix != "") {
-            for (let i = 0; i < imgURLnetflix.length; i++) {
-                await Sleep(100)
-                console.log(imgURLnetflix[i])
-                img = imageToBase64(imgURLnetflix[i])
-                await gclient.sendImageAsSticker(config.DEserien_feedIMGSticker[j], img);
-            }
-        }
-        if (amazonprime != "") {
-            for (let i = 0; i < imgURLamazonprime.length; i++) {
-                await Sleep(100)
-                console.log(imgURLamazonprime[i])
-                img = imageToBase64(imgURLamazonprime[i])
-                await gclient.sendImageAsSticker(config.DEserien_feedIMGSticker[j], imgURLamazonprime[i]);
-            }
+  imgURLamazonprime.forEach(async (element) => {
+    filepath = 'Sticker/' + element.substring(element.lastIndexOf('/') + 1)
+    const response = await fetch(element)
+    const buffer = await response.buffer()
+    fs.writeFile(filepath, buffer, () => console.log('finished downloading!'))
+    await convertSticker(filepath)
+  })
 
-        }
-        
-    } */
+  for (let j = 0; j < config.DEserien_feedIMGSticker.length; j++) {
+    if (netflix != '') {
+      for (let i = 0; i < imgURLnetflix.length; i++) {
+        filepath = 'Sticker/' + imgURLnetflix[i].substring(imgURLnetflix[i].lastIndexOf('/') + 1)
+        console.log(imgURLnetflix[i])
+        await gclient.sendImageAsSticker(config.DEserien_feedIMGSticker[j], filepath + '.png')
+      }
+    }
+    if (amazonprime != '') {
+      for (let i = 0; i < imgURLamazonprime.length; i++) {
+        filepath = 'Sticker/' + imgURLamazonprime[i].substring(imgURLamazonprime[i].lastIndexOf('/') + 1)
+        console.log(imgURLamazonprime[i])
+        await gclient.sendImageAsSticker(config.DEserien_feedIMGSticker[j], filepath + '.png')
+      }
+    }
+  } */
   delete require.cache[require.resolve('./config.json')]
 }
 
 function Sleep(milliseconds) {
   return new Promise((resolve) => setTimeout(resolve, milliseconds))
+}
+
+async function convertSticker(file) {
+  await nrc.run('convert ' + file + ' ' + file + '.png')
+  var dimensions = await sizeOf(file + '.png')
+  console.log(dimensions.width + '  ' + dimensions.height)
+  if (dimensions.width < dimensions.height) {
+    await nrc.run('mogrify -bordercolor transparent -border ' + (dimensions.height - dimensions.width) / 2 + 'x0 ' + file + '.png')
+  } else if (dimensions.width > dimensions.height) {
+    await nrc.run('mogrify -bordercolor transparent -border 0x' + (dimensions.width - dimensions.height) / 2 + ' ' + file + '.png')
+  } else {
+  }
 }

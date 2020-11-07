@@ -1,3 +1,11 @@
+/*
+Author: Fredwuz (frederic23.mai@gmail.com)
+queue.js (c) 2020
+Desc: queue logic
+Created:  10/24/2020
+Modified: !date!
+*/
+
 const yt = require('./yt')
 const sendSticker = require('./sendSticker')
 

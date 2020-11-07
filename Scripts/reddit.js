@@ -1,3 +1,11 @@
+/*
+Author: Fredwuz (frederic23.mai@gmail.com)
+reddit.js (c) 2020
+Desc: reddit downloader
+Created:  10/24/2020
+Modified: !date!
+*/
+
 const axios = require('axios')
 const request = require('request')
 const fs = require('fs')

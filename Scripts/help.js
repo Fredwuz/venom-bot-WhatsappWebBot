@@ -1,3 +1,11 @@
+/*
+Author: Fredwuz (frederic23.mai@gmail.com)
+help.js (c) 2020
+Desc: help file
+Created:  10/24/2020
+Modified: !date!
+*/
+
 exports.help = async function (message) {
   gclient.sendText(
     message.from,

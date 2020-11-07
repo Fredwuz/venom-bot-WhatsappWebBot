@@ -1,3 +1,11 @@
+/*
+Author: Fredwuz (frederic23.mai@gmail.com)
+poll.js (c) 2020
+Desc: poll logic
+Created:  10/24/2020
+Modified: !date!
+*/
+
 exports.poll = async function (message) {
   if (message.isGroupMsg && (message.body !== '!result') & (message.body !== '!poll')) {
     for (let i = 0; i < polllist.length; i++) {

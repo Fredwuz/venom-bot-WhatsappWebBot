@@ -1,3 +1,11 @@
+/*
+Author: Fredwuz (frederic23.mai@gmail.com)
+sauce.js (c) 2020
+Desc: anime sauce finder using trace.moe
+Created:  10/24/2020
+Modified: !date!
+*/
+
 const fs = require('fs')
 const nrc = require('node-run-cmd')
 const mime = require('mime-types')

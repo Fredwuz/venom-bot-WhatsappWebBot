@@ -1,3 +1,11 @@
+/*
+Author: Fredwuz (frederic23.mai@gmail.com)
+ban.js (c) 2020
+Desc: logic to restrict someone from using the bot
+Created:  10/24/2020
+Modified: !date!
+*/
+
 const fs = require('fs')
 
 exports.ban = async function (message) {

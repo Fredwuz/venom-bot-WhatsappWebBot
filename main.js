@@ -1,3 +1,11 @@
+/*
+Author: Fredwuz (frederic23.mai@gmail.com)
+main.js (c) 2020
+Desc: main file
+Created:  10/24/2020
+Modified: 10/24/2020
+*/
+
 const venom = require('venom-bot')
 //const wa = require('@open-wa/wa-automate');
 const fs = require('fs')
@@ -59,6 +67,9 @@ async function start(client) {
     poll.poll(message)
     delete require.cache[require.resolve('./Scripts/onMessage')]
     delete require.cache[require.resolve('./Scripts/poll')]
+  })
+  client.onAck((ack) => {
+    //  console.log(ack)
   })
   info.info()
   serien.serien()

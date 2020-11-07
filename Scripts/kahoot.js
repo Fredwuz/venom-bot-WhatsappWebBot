@@ -1,3 +1,11 @@
+/*
+Author: Fredwuz (frederic23.mai@gmail.com)
+kahoot.js (c) 2020
+Desc: kahoot joiner module
+Created:  10/24/2020
+Modified: !date!
+*/
+
 const Kahoot = require('kahoot.js-updated')
 
 exports.kahoot = async function (message) {

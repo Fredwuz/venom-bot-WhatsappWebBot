@@ -1,3 +1,11 @@
+/*
+Author: Fredwuz (frederic23.mai@gmail.com)
+whostreams.js (c) 2020
+Desc: whostreams logic using JustWatch
+Created:  10/24/2020
+Modified: !date!
+*/
+
 const JustWatch = require('justwatch-api')
 
 exports.whostreams = async function (message) {
@@ -8,7 +16,7 @@ exports.whostreams = async function (message) {
   provider = await jw.getProviders()
 
   if (request.items[0] == undefined) {
-    await gclient.sendText(message.from, 'Leider konnte der Film nicht gefunden werden :(')
+    await gclient.sendText(message.from, 'Leider konnte der Film/die Serie nicht gefunden werden :(')
   }
 
   if (request.items[0].offers === undefined) {

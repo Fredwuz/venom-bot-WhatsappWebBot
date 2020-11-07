@@ -1,3 +1,11 @@
+/*
+Author: Fredwuz (frederic23.mai@gmail.com)
+onAddedToGroup.js (c) 2020
+Desc: Actions when added to group
+Created:  10/24/2020
+Modified: !date!
+*/
+
 const fs = require('fs')
 const config = require('./config.json')
 
