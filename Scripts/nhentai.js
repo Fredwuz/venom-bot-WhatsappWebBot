@@ -3,10 +3,10 @@ Author: Fredwuz (frederic23.mai@gmail.com)
 nhentai.js (c) 2020
 Desc: nhentai doujinshi downloader
 Created:  10/24/2020
-Modified: !date!
+Modified: 1/17/2021
 */
-
-const nhentaijs = require('nhentai-js')
+const axios = require('axios')
+const nhentai = require('nhentai')
 const request = require('request')
 const imgToPDF = require('image-to-pdf')
 const fs = require('fs')
@@ -16,15 +16,24 @@ exports.downloader = async function (message) {
   let download_count = 0
   let PDFpages = []
   try {
-    const dojin = await nhentaijs.getDoujin(id)
-    pages_array = dojin.pages
-    title = dojin.title
+    const api = new nhentai.API()
+    const doujin = await api.fetchDoujin(id)
+    pages_array = doujin.pages
+    title = doujin.titles.pretty
     gclient.sendText(message.from, 'Downloading: \n*' + title + '*')
     gclient.sendText(message.from, 'This can take up some time so please be patient')
 
     for (let index = 0; index < pages_array.length; index++) {
       image_name = 'nhentai/' + title + index + '.jpg'
       await new Promise((resolve) => request(pages_array[index]).pipe(fs.createWriteStream(image_name)).on('finish', resolve))
+      console.log(pages_array[index].url)
+      /*       const response = await axios({
+        method: 'GET',
+        url: pages_array[index].url,
+        responseType: 'stream',
+      })
+      await response.data.pipe(fs.createWriteStream(image_name)) */
+
       PDFpages.push(image_name)
       download_count++
       //  console.log(`Downloading: ${download_count} out of ${pages_array.length}`)
