@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "audio-loader": "^1.0.3",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.3",
     "cloudinary": "^1.23.0",
     "curl": "^0.1.4",
